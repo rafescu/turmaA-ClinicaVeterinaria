@@ -104,7 +104,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animais.cs" />
+    <Compile Include="Models\Consultas.cs" />
     <Compile Include="Models\Donos.cs" />
+    <Compile Include="Models\Veterinarios.cs" />
     <Compile Include="Models\VetsDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
