@@ -1,0 +1,98 @@
+﻿@model ClinicaVeterinaria.Models.Veterinarios
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes do Veterinario</h2>
+
+<div>
+    <h4>Veterinarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumPorta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumPorta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Andar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Andar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodPostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodPostal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NIF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NIF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEntradaClinica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEntradaClinica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumCedulaProf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumCedulaProf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInscOrdem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInscOrdem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculdade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculdade)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.VeterinarioID }) |
+    @Html.ActionLink("Voltar para a lista dos Veterinarios", "Index")
+</p>
