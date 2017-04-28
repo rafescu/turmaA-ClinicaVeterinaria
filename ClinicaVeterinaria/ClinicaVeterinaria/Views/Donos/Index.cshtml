@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ClinicaVeterinaria.Models.Donos>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista dos Donos";
 }
 
-<h2>Index</h2>
+<h2>Lista dos Donos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar novo dono", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.NIF)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DonoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DonoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DonoID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.DonoID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.DonoID }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.DonoID })
         </td>
     </tr>
 }
