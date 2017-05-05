@@ -39,14 +39,56 @@ namespace ClinicaVeterinaria.Controllers {
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DonoID,Nome,NIF")] Donos donos) {
-            if (ModelState.IsValid) {
-                db.Donos.Add(donos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        public ActionResult Create([Bind(Include = "Nome,NIF")] Donos dono) {
 
-            return View(donos);
+            //determinar o ID a atribuir ao novo 'dono'
+            int novoID = 0;
+            try {
+                //perguntar á BD qual o último DonoID
+                novoID = db.Donos.Max(d => d.DonoID) + 1;
+            } catch (Exception) {
+                //não existe dados na BD
+                //o MAX devolve NULL
+                novoID = 1;
+            }
+            
+            //outra forma
+            //novoID = db.Donos.Last().DonoID + 1;
+            //outra forma
+            //novoID = (from d in db.Donos
+            //          orderby d.DonoID descending
+            //          select d.DonoID).FirstOrDefault() + 1;
+            //outra forma
+            //novoID = db.Donos.OrderByDescending(d => d.DonoID).FirstOrDefault().DonoID + 1;
+
+            //atribuir o novo ID ao 'dono'
+            dono.DonoID = novoID;
+            try {
+                if (ModelState.IsValid) { //confronta se os dados a ser introduzidos estão consistentes com o model
+
+                                //adicionar um novo 'dono'
+                                db.Donos.Add(dono);
+                                //guardar as alteracoes
+                                db.SaveChanges();
+                                //redirecionar para a página de início
+                                return RedirectToAction("Index");
+                            }
+            } catch (Exception ex) {
+                ModelState.AddModelError("",
+                    string.Format("Ocorreu um erro na operacão de guardar um novo Dono...")
+                    );
+                //adicionar a uma classe ERRO
+                   //-id
+                   //-timestamp
+                   //-operacao que gerou o erro
+                   //-mensagem de erro(ex.Message)
+                   //-qual o utilizador que gerou o erro
+                   //-...
+                   //enviar email ao utilizador 'admin' a avisar da ocorrencia do erro
+            }
+            //se houver problemas, volta para a View do Create
+            //com os dados do 'dono'
+            return View(dono);
         }
 
         // GET: Donos/Edit/5
