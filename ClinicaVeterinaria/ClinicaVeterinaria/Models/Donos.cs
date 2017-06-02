@@ -30,6 +30,17 @@ namespace ClinicaVeterinaria.Models {
         [RegularExpression("[0-9 ]{9}", ErrorMessage ="Escreva apenas 9 carateres numéricos...")]
         public string NIF { get; set; }
 
+
+        //##################################################################
+        //criar um atributo para ligar este atributo à BD de autenticacao
+        //##################################################################
+        public string Username { get; set; }
+
+
+
+
+
+
         // especificar que um DONO tem muitos ANIMAIS
         public ICollection<Animais> ListaDeAnimais { get; set; }
 

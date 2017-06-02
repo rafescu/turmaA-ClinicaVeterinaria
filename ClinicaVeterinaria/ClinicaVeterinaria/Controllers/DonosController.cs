@@ -16,9 +16,16 @@ namespace ClinicaVeterinaria.Controllers {
         private VetsDB db = new VetsDB();
 
         // GET: Donos
-        [AllowAnonymous] //permite o acesso de utilizadores Anónimos aos conteúdos deste método, apenas deste.
+        //[AllowAnonymous] //permite o acesso de utilizadores Anónimos aos conteúdos deste método, apenas deste.
         public ActionResult Index() {
-            return View(db.Donos.ToList().OrderBy(d => d.Nome));
+            //mostra os dados apenas para os FUNCIONARIOS ou para os VETERINARIOS
+            if (User.IsInRole("Veterinario") || User.IsInRole("Funcionario"))
+            {
+                
+               return View(db.Donos.ToList().OrderBy(d => d.Nome)); 
+            }
+            //se chegar aqui, é porque é DONO
+            return View(db.Donos.Where(d=>d.Username.Equals(User.Identity.Name)).ToList());
         }
 
         // GET: Donos/Details/5
